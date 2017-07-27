@@ -8,7 +8,7 @@ A JSON parser middleware for `HTTP::Server`s.
 use HTTP::Server::Async;
 use HTTP::Server::Middleware::JSON;
 
-my HTTP::Server::Async $srv .=new;
+my HTTP::Server::Async $app .=new;
 
 body-parse-json $app;
 
