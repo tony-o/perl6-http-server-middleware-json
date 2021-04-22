@@ -1,5 +1,5 @@
 use JSON::Fast;
-use HTTP::Server;
+use HTTP::Server::Role;
 no precompilation;
 
 module HTTP::Server::Middleware::JSON {
@@ -17,7 +17,7 @@ module HTTP::Server::Middleware::JSON {
   multi sub trait_mod:<is>(Routine $sub, :$json-consumer!) is export {
     $sub.wrap: sub ($req, $res) {
       unless $req.params<stash><body-parsed> {
-        return $err($req, $res); 
+        return $err($req, $res);
       }
       callsame;
     };
@@ -27,7 +27,7 @@ module HTTP::Server::Middleware::JSON {
     $req.header('content-type')[0]<content-type> // '';
   }
 
-  sub body-parse-json(HTTP::Server $server) is export {
+  sub body-parse-json(HTTP::Server::Role $server) is export {
     $server.handler: sub ($req, $res) {
       $req.params<stash><content-type> = content-type $req;
       my $rval = True;
