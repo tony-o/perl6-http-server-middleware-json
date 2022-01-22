@@ -1,7 +1,7 @@
 {
   "perl"        : "6.*",
   "name"        : "HTTP::Server::Middleware::JSON",
-  "version"     : "0.0.1",
+  "version"     : "0.0.2",
   "description" : "Middleware to parse JSON for HTTP::Server-s",
   "auth"        : "zef:tony-o",
   "depends"     : [ "HTTP::Roles", "JSON::Fast" ],
